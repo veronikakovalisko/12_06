@@ -21,7 +21,28 @@ def to_power(x: Union[int, float], exp: int) -> Union[int, float]:
         return x * to_power(x, exp - 1)
 
 
+'''Task 2
 
+from typing import Optional
+def is_palindrome(looking_str: str, index: int = 0) -> bool:
+    """
+    Checks if input string is Palindrome
+    >>> is_palindrome('mom')
+    True
+
+    >>> is_palindrome('sassas')
+    True
+
+    >>> is_palindrome('o')
+    True
+    """
+    pass'''
+
+
+def is_palindrome(looking_str: str, index: int = 0) -> bool:
+    if len(looking_str) > 0 and index != len(looking_str):
+        if looking_str[len(looking_str) - 1] == looking_str[index]:
+            return is_palindrome(looking_str[:len(looking_str) - 1], index + 1)
 '''Task 3
 from typing import Optional
 def mult(a: int, n: int) -> int:
@@ -80,9 +101,10 @@ def sum_of_digits(digit_string: str) -> int:
     """'''
 
 def sum_of_digits(digit_string: str) -> int:
-    if digit_string.isdigit() :
+    if type(digit_string) is int or digit_string.isdigit():
         ds = int(digit_string)
-        if ds == 0: return 0
+        if ds == 0:
+            return 0
         return ds % 10 + sum_of_digits(ds // 10)
     else:
         raise ValueError("input string must be digit string")
@@ -94,7 +116,7 @@ if __name__ == '__main__':
     # print(to_power(2, -1))
     print(mult(2, 4))
     print(mult(2, 0))
-    print(is_palindrome('mom'))
+    #print(is_palindrome('mom'))
     print(reverse("hello"))
     print(reverse("o"))
-   #print(sum_of_digits("26"))
+    print(sum_of_digits("22"))
